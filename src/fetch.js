@@ -47,7 +47,10 @@ module.exports = async ({
  */
 const clean = item => {
   forEach(item, (value, key) => {
-    if (startsWith(key, `__`)) {
+    if((0, _lodash.endsWith)(key, 'component')) {
+      item.component = item[key];
+      delete item[key];
+    } else if (startsWith(key, `__`)) {
       delete item[key]
     } else if (startsWith(key, `_`)) {
       delete item[key]
